@@ -1,8 +1,11 @@
 package javacamp.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="employers")
-public class Employers {
+public class Employers extends Users {
 	
 	@Id
 	
@@ -30,5 +33,7 @@ public class Employers {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobadvertisements;
+		
 }
